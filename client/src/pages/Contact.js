@@ -15,13 +15,13 @@ const Contact = () => {
             any query and info about the product, feel free to call anytime. We are 24X7 available 
           </p>
           <p className='mt-3'>
-            <BiMailSend /> : www.help@neocommerce.com
+            Mail : www.help@neocommerce.com
           </p>
           <p className='mt-3'>
-            <BiPhoneCall /> : 012-3456789
+            Phone : 012-3456789
           </p>
           <p className='mt-3'>
-            <BiSupport /> : 1800-0000-0000 (toll free)
+            Support : 1800-0000-0000 (toll free)
           </p>
         </div>
       </div>
