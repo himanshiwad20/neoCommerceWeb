@@ -181,7 +181,7 @@ const HomePage = () => {
                   (
                     <>
                     {" "}
-                    LoadMode <AiOutlineReload />
+                    LoadMode...
                     </>
                   )
                 }
