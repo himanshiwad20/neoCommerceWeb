@@ -1,6 +1,5 @@
 import React from 'react'
 import { NavLink, Link } from 'react-router-dom'
-import {GiShoppingBag} from 'react-icons/gi'
 import { useAuth } from '../../context/auth'
 import {toast} from 'react-hot-toast'
 import SearchInputs from '../Form/SearchInputs'
