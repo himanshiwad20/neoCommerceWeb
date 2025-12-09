@@ -1,8 +1,8 @@
-import mongoose from 'mongoose';
+import mongoose from 'mongoose'
 
 const userSchema = new mongoose.Schema({
     name: {
-        type: String,
+        type: String, 
         required: true,
         trim: true
     },
@@ -17,10 +17,11 @@ const userSchema = new mongoose.Schema({
     },
     phone: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     address: {
-        type: String,
+        type: {},
         required: true
     },
     answer: {
@@ -31,8 +32,6 @@ const userSchema = new mongoose.Schema({
         type: Number,
         default: 0
     }
-},
-{ timestamps: true }
-)
+}, {timestamps: true})
 
-export default mongoose.model('users', userSchema);
+export default mongoose.model('users', userSchema)
