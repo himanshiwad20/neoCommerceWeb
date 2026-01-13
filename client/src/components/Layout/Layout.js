@@ -24,6 +24,7 @@ const Layout = ({children, title, description, keywords, author}) => {
   )
 }
 
+
 Layout.defaultProps = {
   title: 'neoCommerce Web',
   description: 'ecommerce app',
