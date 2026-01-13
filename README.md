@@ -1,4 +1,4 @@
-neoCommerce - A full-stack eCommerce web application for purchasing different products, with user-friendly Interface
+neoCommerce - Developed a full-stack product purchase and management platform enabling users to discover, filter, and purchase products with an intuitive user experience.
 Live - https://neocommerce-web.onrender.com/
 
 Features:
