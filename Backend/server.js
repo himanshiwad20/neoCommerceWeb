@@ -8,8 +8,12 @@ import cors from 'cors'
 import categoryRoutes from './routes/categoryRoutes.js'
 import productRoutes from './routes/productRoutes.js'
 import path from 'path'
+import { fileURLToPath } from "url";
 dotenv.config()
 connectDb()
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express()
 
@@ -23,14 +27,22 @@ app.use('/api/v1/category', categoryRoutes)
 app.use('/api/v1/product', productRoutes)
 
 
-app.use("*", function(req, res) {
-    res.sendFile(path.join(__dirname, "./client/build/index.html"))
-})
+// app.use("*", function(req, res) {
+//     res.sendFile(path.join(__dirname, "./client/build/index.html"))
+// })
 // app.get('/', (req, res) => {
 //     res.send("<h1>Welcome!</h1>")
 // })
 
-const PORT = process.env.PORT | 8080
+if (process.env.NODE_ENV === "production") {
+    app.use(express.static(path.join(__dirname, "client", "build")));
+
+    app.get("*", (req, res) => {
+        res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+    });
+}
+
+const PORT = process.env.PORT ||  8080
 
 
 app.listen(PORT, () => {
