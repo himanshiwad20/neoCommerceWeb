@@ -18,8 +18,11 @@ app.use(cors({
     "https://neo-commerce-web-frontend.vercel.app"
   ],
   methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
-  credentials: true
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: false
 }));
+
+app.options("/*", cors());
 
 app.use(morgan('dev'));
 app.use(express.json());
