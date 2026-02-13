@@ -3,7 +3,7 @@
   "buildCommand": "npm run build --prefix client",
   "outputDirectory": "client/build",
   "functions": {
-    "api/index.mjs": {
+    "api/[...all].mjs": {
       "runtime": "nodejs18.x",
       "includeFiles": "Backend/**"
     }
@@ -11,7 +11,7 @@
   "rewrites": [
     {
       "source": "/api/:path*",
-      "destination": "/api/index.mjs"
+      "destination": "api/[...all].mjs"
     },
     {
       "source": "/:path*",
