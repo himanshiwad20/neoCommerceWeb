@@ -22,7 +22,7 @@ const HomePage = () => {
 
   const getAllCategories = async () => {
     try {
-      const {data} = await axios.get(`${process.env.REACT_APP_API}/api/v1/category/getCategory`)
+      const {data} = await axios.get(`${(process.env.REACT_APP_API || "")}/api/v1/category/getCategory`)
       if(data?.success) {
         setCategories(data?.category)
       }
@@ -39,7 +39,7 @@ const HomePage = () => {
   const getAllProducts = async () => {
     try {
       setLoading(true)
-      const {data} = await axios.get(`${process.env.REACT_APP_API}/api/v1/product/perPageProducts/${page}`)
+      const {data} = await axios.get(`${(process.env.REACT_APP_API || "")}/api/v1/product/perPageProducts/${page}`)
       setLoading(false)
       setProducts(data.products)
     } catch (error) {
@@ -50,7 +50,7 @@ const HomePage = () => {
 
   const getTotal = async () => {
     try {
-      const {data} = await axios.get(`${process.env.REACT_APP_API}/api/v1/product/countProducts`)
+      const {data} = await axios.get(`${(process.env.REACT_APP_API || "")}/api/v1/product/countProducts`)
       setTotal(data?.count)
     } catch (error) {
       console.log(error)
@@ -82,7 +82,7 @@ const HomePage = () => {
 
   const getFilteredProducts = async () => {
     try {
-      const {data} = await axios.post(`${process.env.REACT_APP_API}/api/v1/product/filterProducts`, {checked, radio})
+      const {data} = await axios.post(`${(process.env.REACT_APP_API || "")}/api/v1/product/filterProducts`, {checked, radio})
       setProducts(data.products)
     } catch(error) {
       console.log(error)
@@ -98,7 +98,7 @@ const HomePage = () => {
   const loadMoreProducts = async () => {
     try {
       setLoading(true)
-      const {data} = await axios.get(`${process.env.REACT_APP_API}/api/v1/product/perPageProducts/${page}`)
+      const {data} = await axios.get(`${(process.env.REACT_APP_API || "")}/api/v1/product/perPageProducts/${page}`)
       setLoading(false)
       setProducts([...products, ...data?.products]) 
     } catch (error) {
@@ -144,7 +144,7 @@ const HomePage = () => {
           <div className='d-flex flex-wrap'>
             {products?.map(p => (
                 <div className="card m-2" style={{width: '18rem'}} key={p._id}>
-                  <img src={`${process.env.REACT_APP_API}/api/v1/product/getPhoto/${p._id}`} className="card-img-top w-5 h-5 object-fit" alt={p.name} />
+                  <img src={`${(process.env.REACT_APP_API || "")}/api/v1/product/getPhoto/${p._id}`} className="card-img-top w-5 h-5 object-fit" alt={p.name} />
                   <div className="card-body">
                     <h5 className="card-title">{p.name}</h5>
                     <h5 className="card-title card-price">

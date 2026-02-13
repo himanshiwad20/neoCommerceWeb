@@ -11,7 +11,7 @@ export default function UserRoute() {
     useEffect(() => {
         const authCheck = async() => {
             try {
-                const res = await axios.get(`${process.env.REACT_APP_API}/api/v1/auth/userAuth`)
+                const res = await axios.get(`${(process.env.REACT_APP_API || "")}/api/v1/auth/userAuth`)
             
                 if(res.data.ok) {
                     setOk(true)

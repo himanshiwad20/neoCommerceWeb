@@ -18,7 +18,7 @@ const ProductDetails = () => {
 
     const getProduct = async () => {
         try {
-            const {data} = await axios.get(`${process.env.REACT_APP_API}/api/v1/product/getSingleProduct/${params.slug}`)
+            const {data} = await axios.get(`${(process.env.REACT_APP_API || "")}/api/v1/product/getSingleProduct/${params.slug}`)
             setProduct(data?.product)
             getSimilarProducts(data?.product._id, data?.product.category._id)
         } catch (error) {
@@ -28,7 +28,7 @@ const ProductDetails = () => {
 
     const getSimilarProducts = async (pid, cid) => {
         try {
-            const {data} = await axios.get(`${process.env.REACT_APP_API}/api/v1/product/similarProducts/${pid}/${cid}`)
+            const {data} = await axios.get(`${(process.env.REACT_APP_API || "")}/api/v1/product/similarProducts/${pid}/${cid}`)
             setSimilarProducts(data?.products)
         } catch (error) {
             console.log(error)
@@ -39,7 +39,7 @@ const ProductDetails = () => {
     <Layout>
       <div className='row container product-details'>
         <div className='col-md-6'>
-            <img src={`${process.env.REACT_APP_API}/api/v1/product/getPhoto/${product._id}`} className="card-img-top" alt={product.name} height={350} weight={'350px'} />
+            <img src={`${(process.env.REACT_APP_API || "")}/api/v1/product/getPhoto/${product._id}`} className="card-img-top" alt={product.name} height={350} weight={'350px'} />
         </div>
         <div className='col-md-6 product-details-info'>
             <h1 className='text-center'>Product Details</h1>
@@ -63,7 +63,7 @@ const ProductDetails = () => {
         <div className='d-flex flex-wrap'>
             {similarProducts?.map(p => (
                 <div className="card m-2" key={p._id}>
-                  <img src={`${process.env.REACT_APP_API}/api/v1/product/getPhoto/${p._id}`} className="card-img-top w-5 h-5 object-fit" alt={p.name} />
+                  <img src={`${(process.env.REACT_APP_API || "")}/api/v1/product/getPhoto/${p._id}`} className="card-img-top w-5 h-5 object-fit" alt={p.name} />
                   <div className="card-body">
                     <div className="card-name-price">
                       <h5 className="card-title">{p.name}</h5>
@@ -92,4 +92,4 @@ export default ProductDetails
 
 // w-5 h-5 object-fit   div-> div-> img
 //<div className="card m-2" style={{width: '18rem'}} key={p._id}>
-//<img src={`${process.env.REACT_APP_API}/api/v1/product/getPhoto/${p._id}`} className="card-img-top w-5 h-5 object-fit" alt={p.name} />
+//<img src={`${(process.env.REACT_APP_API || "")}/api/v1/product/getPhoto/${p._id}`} className="card-img-top w-5 h-5 object-fit" alt={p.name} />
