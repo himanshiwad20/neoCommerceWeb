@@ -17,7 +17,7 @@ const ForgotPassword = () => {
         e.preventDefault()
 
         try {
-            const res = await axios.post(`${process.env.REACT_APP_API}/api/v1/auth/forgotPassword`, {email, answer, newPassword})
+            const res = await axios.post(`${(process.env.REACT_APP_API || "")}/api/v1/auth/forgotPassword`, {email, answer, newPassword})
 
             if(res && res.data.success) {
                 // toast.error('Nah')

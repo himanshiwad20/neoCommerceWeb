@@ -16,7 +16,7 @@ const CreateCategory = () => {
     const handleSumbit = async (e) => {
         e.preventDefault()
         try {
-            const {data} = await axios.post(`${process.env.REACT_APP_API}/api/v1/category/createCategory`, {name})
+            const {data} = await axios.post(`${(process.env.REACT_APP_API || "")}/api/v1/category/createCategory`, {name})
             if(data?.success) {
                 toast.success(`${data.category.name} is created`)
                 setName("")
@@ -32,7 +32,7 @@ const CreateCategory = () => {
 
     const getAllCategories = async () => {
         try {
-            const {data} = await axios.get(`${process.env.REACT_APP_API}/api/v1/category/getCategory`)
+            const {data} = await axios.get(`${(process.env.REACT_APP_API || "")}/api/v1/category/getCategory`)
             if(data?.success) {
                 setCategories(data?.category)
             }
@@ -49,7 +49,7 @@ const CreateCategory = () => {
     const handleUpdate = async(e) => {
         e.preventDefault()
         try {
-            const {data} = await axios.put(`${process.env.REACT_APP_API}/api/v1/category/updateCategory/${selected._id}`, {name: updatedName})
+            const {data} = await axios.put(`${(process.env.REACT_APP_API || "")}/api/v1/category/updateCategory/${selected._id}`, {name: updatedName})
             if(data) {
                 toast.success(`${selected.name} is updated`)
             } else {
@@ -66,7 +66,7 @@ const CreateCategory = () => {
 
     const handleDelete = async(c) => {
         try {
-            const {data} = await axios.delete(`${process.env.REACT_APP_API}/api/v1/category/deleteCategory/${c._id}`)
+            const {data} = await axios.delete(`${(process.env.REACT_APP_API || "")}/api/v1/category/deleteCategory/${c._id}`)
 
             if(data.success) {
                 toast.success(`${c.name} is deleted`)

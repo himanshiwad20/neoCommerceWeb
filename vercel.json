@@ -1,0 +1,17 @@
+{
+  "installCommand": "npm install --prefix Backend && npm install --prefix client",
+  "buildCommand": "npm run build --prefix client",
+  "outputDirectory": "client/build",
+  "rewrites": [
+    {
+      "source": "/((?!api($|/)).*)",
+      "destination": "/index.html"
+    }
+  ],
+  "functions": {
+    "api/[...all].mjs": {
+      "runtime": "nodejs20.x",
+      "includeFiles": "Backend/**"
+    }
+  }
+}

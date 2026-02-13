@@ -12,7 +12,7 @@ const CategoryProducts = () => {
 
     const getCatWiseProducts = async () => {
         try {
-            const {data} = await axios.get(`${process.env.REACT_APP_API}/api/v1/product/categoryWiseProducts/${params.slug}`)
+            const {data} = await axios.get(`${(process.env.REACT_APP_API || "")}/api/v1/product/categoryWiseProducts/${params.slug}`)
             setProducts(data?.products)
             setCategory(data?.category)
         } catch (error) {
@@ -34,7 +34,7 @@ const CategoryProducts = () => {
           <div className='d-flex flex-wrap'>
             {products?.map(p => (
                 <div className="card m-2" key={p._id}>
-                  <img src={`${process.env.REACT_APP_API}/api/v1/product/getPhoto/${p._id}`} className="card-img-top w-5 h-5 object-fit" alt={p.name} />
+                  <img src={`${(process.env.REACT_APP_API || "")}/api/v1/product/getPhoto/${p._id}`} className="card-img-top w-5 h-5 object-fit" alt={p.name} />
                   <div className="card-body">
                     <div className="card-name-price">
                     <h5 className="card-title">{p.name}</h5>
