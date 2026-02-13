@@ -14,7 +14,7 @@ connectDb();
 const app = express();
 
 app.use(cors({
-  origin: "https://neo-commerce-web-frontend.vercel.app",
+  origin: "true",
   methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
   credentials: true
 }));
