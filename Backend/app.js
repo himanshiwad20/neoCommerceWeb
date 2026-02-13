@@ -13,7 +13,13 @@ connectDb();
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+  origin: "https://neo-commerce-web-bc4j.vercel.app",
+  methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
+  credentials: true
+}));
+
+app.options("*", cors())
 app.use(morgan('dev'));
 app.use(express.json());
 
