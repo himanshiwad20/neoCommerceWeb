@@ -18,7 +18,9 @@ app.use(cors({
     "http://neo-commerce-web-frontend.vercel.app",
     "http://neo-commerce-web-backend-a.vercel.app",
     "https://neo-commerce-web-frontend.vercel.app",
-    "https://neo-commerce-web-backend-a.vercel.app"
+    "https://neo-commerce-web-backend-a.vercel.app",
+    "http://neo-commerce-web-frontend-a.vercel.app",
+    "https://neo-commerce-web-frontend-a.vercel.app"
   ],
   methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
   // allowedHeaders: ["Content-Type", "Authorization"],
